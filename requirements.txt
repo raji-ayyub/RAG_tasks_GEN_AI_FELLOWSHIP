@@ -1,0 +1,7 @@
+chromadb
+langchain-chroma==0.2.0
+langchain
+langchain-openai
+langgraph
+pypdf 
+# dotenv
