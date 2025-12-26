@@ -1,5 +1,5 @@
 chromadb
-langchain-chroma==0.2.0
+langchain-chroma
 langchain
 langchain-openai
 langgraph
