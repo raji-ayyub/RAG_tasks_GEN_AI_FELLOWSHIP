@@ -45,36 +45,32 @@ support_bot = create_support_agent()
 
 
 
+# Multi-turn conversation test
+conversations = [
+    "I bought a laptop last week",
+    "It won't turn on",
+    "Yes, I tried that already",
+    "Can I get a replacement?"
+]
 
-# CLI conversation test
-while True:
-    query = input("Customer: ")
-    thread_id="customer_223"
-
-    response = support_bot.invoke(
-        {"messages": [HumanMessage(content=query)]},
+thread_id = "customer_123"
+for message in conversations:
+    result = support_bot.invoke(
+        {"messages": [HumanMessage(content=message)]},
         config={"configurable": {"thread_id": thread_id}}
     )
-    print(f"assistant: {response['messages'][-1].content}\\n")
+    print(f"Customer: {message}")
+    print(f"Support: {result['messages'][-1].content}\\n")
 
 
+# CLI conversation test
+# while True:
+#     query = input("Customer: ")
+#     thread_id="customer_223"
 
-
-
-
-# Multi-turn conversation test
-# conversations = [
-#     "I bought a laptop last week",
-#     "It won't turn on",
-#     "Yes, I tried that already",
-#     "Can I get a replacement?"
-# ]
-
-# thread_id = "customer_123"
-# for message in conversations:
-#     result = support_bot.invoke(
-#         {"messages": [HumanMessage(content=message)]},
+#     response = support_bot.invoke(
+#         {"messages": [HumanMessage(content=query)]},
 #         config={"configurable": {"thread_id": thread_id}}
 #     )
-#     print(f"👤 Customer: {message}")
-#     print(f"🤖 Support: {result['messages'][-1].content}\\n")
+#     print(f"assistant: {response['messages'][-1].content}\\n")
+

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGadgets Customer Support</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-headset"></i>
+                    <span>TechGadgets Support</span>
+                </div>
+                <div class="status">
+                    <span class="status-indicator online"></span>
+                    <span class="status-text">AI Assistant Online</span>
+                </div>
+            </div>
+            <div class="session-info">
+                <div id="sessionId" class="session-id">
+                    <i class="fas fa-id-card"></i>
+                    <span>Session: <span id="sessionIdText">Not started</span></span>
+                </div>
+                <button id="newSessionBtn" class="btn btn-secondary">
+                    <i class="fas fa-plus"></i> New Session
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-user"></i> Customer Info</h3>
+                    <div class="customer-form">
+                        <div class="form-group">
+                            <label for="customerName">Name</label>
+                            <input type="text" id="customerName" placeholder="Your name" value="Guest">
+                        </div>
+                        <div class="form-group">
+                            <label for="customerEmail">Email (optional)</label>
+                            <input type="email" id="customerEmail" placeholder="email@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="issueType">Issue Type</label>
+                            <select id="issueType">
+                                <option value="general">General Inquiry</option>
+                                <option value="technical">Technical Support</option>
+                                <option value="billing">Billing & Payment</option>
+                                <option value="returns">Returns & Refunds</option>
+                                <option value="warranty">Warranty Claim</option>
+                                <option value="shipping">Shipping & Delivery</option>
+                            </select>
+                        </div>
+                        <button id="startSessionBtn" class="btn btn-primary">
+                            <i class="fas fa-play"></i> Start Session
+                        </button>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-history"></i> Quick Actions</h3>
+                    <div class="quick-actions">
+                        <button class="quick-btn" data-prompt="My laptop won't turn on">
+                            <i class="fas fa-laptop"></i> Power Issues
+                        </button>
+                        <button class="quick-btn" data-prompt="I need help with a return">
+                            <i class="fas fa-undo"></i> Return Request
+                        </button>
+                        <button class="quick-btn" data-prompt="What's your warranty policy?">
+                            <i class="fas fa-file-contract"></i> Warranty Info
+                        </button>
+                        <button class="quick-btn" data-prompt="My order hasn't arrived">
+                            <i class="fas fa-truck"></i> Shipping Issue
+                        </button>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-info-circle"></i> About</h3>
+                    <div class="about-info">
+                        <p>This AI assistant can help with:</p>
+                        <ul>
+                            <li>Technical troubleshooting</li>
+                            <li>Order status inquiries</li>
+                            <li>Return & refund requests</li>
+                            <li>Warranty information</li>
+                            <li>Product specifications</li>
+                        </ul>
+                        <p class="note"><i class="fas fa-exclamation-circle"></i> For complex issues, you'll be connected to a human agent.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Chat Container -->
+            <div class="chat-container">
+                <!-- Welcome Screen -->
+                <div id="welcomeScreen" class="welcome-screen">
+                    <div class="welcome-content">
+                        <div class="welcome-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h1>Welcome to TechGadgets Support</h1>
+                        <p>I'm your AI customer support assistant. I can help you with:</p>
+                        <div class="capabilities">
+                            <div class="capability">
+                                <i class="fas fa-tools"></i>
+                                <span>Troubleshooting</span>
+                            </div>
+                            <div class="capability">
+                                <i class="fas fa-shipping-fast"></i>
+                                <span>Order Support</span>
+                            </div>
+                            <div class="capability">
+                                <i class="fas fa-exchange-alt"></i>
+                                <span>Returns & Refunds</span>
+                            </div>
+                            <div class="capability">
+                                <i class="fas fa-file-contract"></i>
+                                <span>Warranty Info</span>
+                            </div>
+                        </div>
+                        <p class="instructions">Start by entering your information on the left and clicking "Start Session", or use one of the quick action buttons.</p>
+                    </div>
+                </div>
+
+                <!-- Chat Messages -->
+                <div id="chatMessages" class="chat-messages" style="display: none;">
+                    <!-- Messages will be inserted here -->
+                </div>
+
+                <!-- Input Area -->
+                <div class="input-container">
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            id="messageInput" 
+                            placeholder="Type your message here..." 
+                            disabled
+                        >
+                        <div class="input-actions">
+                            <button id="sendBtn" class="btn btn-send" disabled>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                            <button id="clearBtn" class="btn btn-clear" disabled>
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="input-hints">
+                        <span>Try asking about:</span>
+                        <button class="hint-btn" data-prompt="How do I reset my laptop?">Reset instructions</button>
+                        <button class="hint-btn" data-prompt="What's the return window?">Return policy</button>
+                        <button class="hint-btn" data-prompt="Do you offer international shipping?">Shipping info</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <span class="company">© 2024 TechGadgets Inc.</span>
+                <div class="footer-links">
+                    <span id="messageCount">Messages: 0</span>
+                    <span id="responseTime">Response time: --</span>
+                    <button id="exportBtn" class="btn-text">
+                        <i class="fas fa-download"></i> Export Chat
+                    </button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
