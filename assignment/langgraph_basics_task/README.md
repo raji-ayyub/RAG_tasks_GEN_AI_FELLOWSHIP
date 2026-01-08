@@ -1,8 +1,8 @@
-# Note: for quicker testing and overview, use task_basic_mode.py
-# but full project uses agent.py and customer_support.py
+### Note: for quicker testing and overview, use task_basic_mode.py
+### but full project uses agent.py and customer_support.py
 
 
-# TechGadgets Customer Support - LangGraph AI Agent
+## TechGadgets Customer Support - LangGraph AI Agent
 
 A modern, production-ready customer support chatbot built with LangGraph, FastAPI, and a responsive frontend interface. This application demonstrates state management, conversation memory, and agentic workflows using LangGraph.
 
